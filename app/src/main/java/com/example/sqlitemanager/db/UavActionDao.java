@@ -97,7 +97,10 @@ public class UavActionDao {
 
         while (curs.moveToNext()) {
             String routename = curs.getString(curs.getColumnIndex("routename"));
-            mRoute.add(routename);
+            if(!mRoute.contains(routename)){
+                mRoute.add(routename);
+            }
+
         }
 
 
@@ -106,10 +109,10 @@ public class UavActionDao {
             Cursor cursor = mDb.rawQuery("select * from uavaction where routename=?",
                     new String[]{mRoute.get(i)});
             Log.d(TAG, "findAction: ___for");
+
+            spotList = new ArrayList<>();
             while (cursor.moveToNext()) {
                 Log.d(TAG, "findAction: ___while");
-                spotList = new ArrayList<>();
-
                 routename = cursor.getString(cursor.getColumnIndex("routename"));
                 routetype = cursor.getString(cursor.getColumnIndex("routetype"));
                 inspectiontime = cursor.getString(cursor.getColumnIndex("inspectiontime"));
@@ -168,8 +171,10 @@ public class UavActionDao {
         Cursor cursor = mDb.rawQuery(sql, null);
 
         while (cursor.moveToNext()) {
-            String name = cursor.getString(cursor.getColumnIndex("routename"));
-            list.add(name);
+            String routename = cursor.getString(cursor.getColumnIndex("routename"));
+            if(!list.contains(routename)){
+                list.add(routename);
+            }
         }
 
         return list;

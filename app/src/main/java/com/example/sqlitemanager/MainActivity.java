@@ -77,15 +77,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(this, "请输入经纬度", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String routename = "动作四";
-                ArrayList<String> routeList = mUavActionDao.findRouteName();
-                if (routeList.contains(routename)){
-                    Toast.makeText(this, "已经存在该航线,请重新添加", Toast.LENGTH_SHORT).show();
-                }else{
-                    mUavActionDao.add("routename", " 检测", "2019年12月24日",
+                String routename = "动作一";
+//                ArrayList<String> routeList = mUavActionDao.findRouteName();
+//                if (routeList.contains(routename)){
+//                    Toast.makeText(this, "已经存在该航线,请重新添加", Toast.LENGTH_SHORT).show();
+//                }else{
+                    mUavActionDao.add(routename, " 检测", "2019年12月24日",
                             "塔一", 116.035667, 34.645622, mLngD,
                             mLatD, 30, 0.6, 0.3, "无动作");
-                }
+//                }
 
                 break;
 
